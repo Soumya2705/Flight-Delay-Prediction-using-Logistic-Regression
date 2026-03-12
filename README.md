@@ -1,154 +1,153 @@
-✈️ Flight Delay Prediction using Logistic Regression
-📌 Project Overview
+# ✈️ Flight Delay Prediction using Logistic Regression
 
-This project predicts whether a flight will be delayed or not delayed using Logistic Regression, a supervised machine learning classification algorithm.
+## 📌 Project Overview
 
-The dataset contains historical airline flight data, including airline information, origin and destination airports, flight schedules, and delay details.
+This project predicts whether a **flight will be delayed or not** using **Logistic Regression**, a supervised machine learning classification algorithm.
 
-The project demonstrates a complete machine learning workflow, including data preprocessing, handling class imbalance, model training, and model evaluation.
+The dataset contains **historical airline flight data**, including airline information, airports, flight timings, and delay information.
 
-📂 Dataset
+The project demonstrates a complete **machine learning workflow**, including:
 
-Since the dataset size is greater than 500 MB, GitHub does not allow direct upload.
-Therefore, the dataset is provided through a Google Drive link.
+* Data preprocessing
+* Handling class imbalance
+* Model training
+* Model evaluation
 
-📊 Main Dataset
+---
+
+## 📂 Dataset
+
+Since the dataset size is **greater than 500 MB**, GitHub does not allow direct upload.  
+Therefore, the dataset is provided through a **Google Drive link**.
+
+### 📊 Main Dataset
 
 https://drive.google.com/file/d/1gkDTuB8LOStxfUf41VNvYWf_UfrHCzNL/view?usp=sharing
 
-🛠️ Tools & Libraries Used
+The dataset includes important flight attributes such as:
 
-Python
+* Airline
+* Origin Airport
+* Destination Airport
+* Departure Time
+* Arrival Delay
+* Distance
+* Delay Causes
 
-Pandas
+---
 
-NumPy
+## 🛠️ Tools & Libraries Used
 
-Scikit-learn
+* Python
+* Pandas
+* NumPy
+* Scikit-learn
+* Matplotlib
+* Seaborn
+* Jupyter Notebook
 
-Matplotlib
+---
 
-Seaborn
+## 🧹 Data Cleaning Steps
 
-Jupyter Notebook
+Before training the machine learning model, the dataset was cleaned and prepared.
 
-🧹 Data Cleaning Steps
+Steps performed:
 
-Several preprocessing steps were performed before training the model:
+* Removed unnecessary columns
+* Handled missing values
+* Removed duplicate rows
+* Encoded categorical variables
+* Created the target variable **FLIGHT_DELAYED**
+* Scaled numerical features using **StandardScaler**
 
-Removed unnecessary columns
+These steps ensure the dataset is suitable for machine learning training.
 
-Handled missing values
+---
 
-Removed duplicate records
+## ⚖️ Handling Class Imbalance
 
-Converted categorical columns using encoding
+The dataset contains **more non-delayed flights than delayed flights**, creating a class imbalance problem.
 
-Created the target variable FLIGHT_DELAYED
+Two techniques were considered:
 
-Scaled numerical features using StandardScaler
+### Oversampling (SMOTE)
 
-These steps helped prepare the dataset for machine learning.
+* SMOTE generates synthetic samples for the minority class.
+* However, since the dataset contains **more than 1 million rows**, applying SMOTE significantly increases dataset size and training time.
 
-⚖️ Handling Class Imbalance
+Therefore **SMOTE was not used in this project.**
 
-The dataset contains more non-delayed flights than delayed flights, which creates a class imbalance problem.
+### Undersampling
 
-Two techniques were considered to address this issue:
-
-SMOTE (Oversampling)
-
-SMOTE generates synthetic samples for the minority class.
-
-However, since the dataset contains more than 1 million rows, applying SMOTE significantly increases the dataset size and training time.
-Therefore, SMOTE was not used in this project due to its high computational cost.
-
-Undersampling
-
-Instead, random undersampling was applied to balance the dataset.
+Instead, **Random Undersampling** was applied.
 
 Steps followed:
 
-Separated delayed and non-delayed flights
+* Separated delayed and non-delayed flights
+* Randomly sampled the majority class
+* Created a balanced dataset with equal samples from both classes
 
-Randomly sampled the majority class
+This approach **reduces training time while improving model learning**.
 
-Created a balanced dataset with equal samples from both classes
+---
 
-This approach improves model learning while keeping training time manageable.
+## 📈 Model Implemented
 
-📈 Model Implemented
-1️⃣ Logistic Regression
+### 1️⃣ Logistic Regression
 
-A Logistic Regression model was used to classify flights into:
+A **Logistic Regression model** was used to classify flights into:
 
-0 → Not Delayed
-1 → Delayed
+* **0 → Not Delayed**
+* **1 → Delayed**
 
-The model learns the relationship between flight features and the probability of a delay.
+The model learns the relationship between flight features and the **probability of delay**.
 
-🔍 Model Evaluation
+---
 
-The model performance was evaluated using several classification metrics:
+## 🔍 Model Evaluation
 
-Accuracy
+The model performance was evaluated using:
 
-Precision
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* Confusion Matrix
 
-Recall
+### Model Performance
 
-F1 Score
+* **Accuracy:** ~84%
+* **Precision:** ~0.86
+* **Recall:** ~0.66
+* **F1 Score:** ~0.74
 
-Confusion Matrix
+These metrics help evaluate how well the model predicts delayed flights.
 
-Model Performance
-Accuracy  : ~84%
-Precision : ~0.86
-Recall    : ~0.66
-F1 Score  : ~0.74
+---
 
-These metrics provide insights into how well the model predicts flight delays.
+## 🚀 How to Run
 
-📊 Confusion Matrix Interpretation
+1. Clone the repository
+2. Download the dataset from the Google Drive link
+3. Place the dataset in the project folder
+4. Open **Flight_Delay_Prediction.ipynb**
+5. Run the notebook step-by-step
 
-The confusion matrix helps understand the prediction results:
+---
 
-True Positive (TP) → Correctly predicted delayed flights
+## 🔮 Future Scope
 
-True Negative (TN) → Correctly predicted non-delayed flights
+Possible improvements include:
 
-False Positive (FP) → Predicted delay but flight was not delayed
+* Using advanced models such as **Random Forest or XGBoost**
+* Performing **hyperparameter tuning**
+* Adding **weather or time-based features**
+* Building an **interactive dashboard**
+* Deploying the model using **Flask or FastAPI**
 
-False Negative (FN) → Delayed flight predicted as not delayed
+---
 
-This helps analyze where the model performs well and where improvements are needed.
+## 📌 License
 
-🚀 How to Run
-
-Clone the repository
-
-Download the dataset from the Google Drive link
-
-Place the dataset in the project folder
-
-Open flight_delay_prediction.ipynb
-
-Run the notebook step-by-step
-
-🔮 Future Scope
-
-Possible improvements for this project include:
-
-Applying advanced machine learning models such as Random Forest or XGBoost
-
-Performing hyperparameter tuning
-
-Creating additional time-based or route-based features
-
-Building an interactive flight delay prediction dashboard
-
-Deploying the model as a web application
-
-📌 License
-
-This project is created for educational and learning purposes
+This project is created for **educational and learning purposes**.
